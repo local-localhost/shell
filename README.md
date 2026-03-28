@@ -31,7 +31,7 @@ sudo pacman -S --needed pybind11
 You can run the shell directly via `nix run`:
 
 ```sh
-nix run github:caelestia-dots/shell
+nix run github:local-localhost/shell
 ```
 
 Or add it to your system configuration:
@@ -42,7 +42,7 @@ Or add it to your system configuration:
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     caelestia-shell = {
-      url = "github:caelestia-dots/shell";
+      url = "github:local-localhost/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -57,13 +57,13 @@ or a devshell. The shell can then be run via `caelestia-shell`.
 > The default package does not have the CLI enabled by default, which is required for full funcionality.
 > To enable the CLI, use the `with-cli` package.
 
-For home-manager, you can also use the Caelestia's home manager module (explained in [configuring](https://github.com/caelestia-dots/shell?tab=readme-ov-file#home-manager-module)) that installs and configures the shell and the CLI.
+For home-manager, you can also use the Caelestia's home manager module (explained in [configuring](https://github.com/local-localhost/shell?tab=readme-ov-file#home-manager-module)) that installs and configures the shell and the CLI.
 
 ### Manual installation
 
 Dependencies:
 
--   [`caelestia-cli`](https://github.com/caelestia-dots/cli)
+-   [`caelestia-cli`](https://github.com/local-localhost/cli)
 -   [`quickshell-git`](https://quickshell.outfoxxed.me) - this has to be the git version, not the latest tagged version
 -   [`ddcutil`](https://github.com/rockowitz/ddcutil)
 -   [`brightnessctl`](https://github.com/Hummer12007/brightnessctl)
@@ -130,7 +130,7 @@ via an `exec-once` in the hyprland config.
 
 All keybinds are accessible via Hyprland [global shortcuts](https://wiki.hyprland.org/Configuring/Binds/#dbus-global-shortcuts).
 If using the entire caelestia dots, the keybinds are already configured for you.
-Otherwise, [this file](https://github.com/caelestia-dots/caelestia/blob/main/hypr/hyprland/keybinds.conf#L1-L39)
+Otherwise, [this file](https://github.com/local-localhost/caelestia/blob/main/hypr/hyprland/keybinds.conf#L1-L39)
 contains an example on how to use global shortcuts.
 
 All IPC commands can be accessed via `caelestia shell ...`. For example
@@ -742,12 +742,12 @@ You can add your custom hyprland configs to `~/.config/caelestia/hypr-user.conf`
 
 ### I want to make my own changes to other stuff!
 
-See the [manual installation](https://github.com/caelestia-dots/shell?tab=readme-ov-file#manual-installation) section
+See the [manual installation](https://github.com/local-localhost/shell?tab=readme-ov-file#manual-installation) section
 for the corresponding repo.
 
 ### I want to disable XXX feature!
 
-Please read the [configuring](https://github.com/caelestia-dots/shell?tab=readme-ov-file#configuring) section in the readme.
+Please read the [configuring](https://github.com/local-localhost/shell?tab=readme-ov-file#configuring) section in the readme.
 If there is no corresponding option, make feature request.
 
 ### How do I make my colour scheme change with my wallpaper?
@@ -783,10 +783,10 @@ Finally another thank you to all the configs I took inspiration from (only one f
 
 ## Stonks 📈
 
-<a href="https://www.star-history.com/#caelestia-dots/shell&Date">
+<a href="https://www.star-history.com/#local-localhost/shell&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=caelestia-dots/shell&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=caelestia-dots/shell&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=caelestia-dots/shell&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=local-localhost/shell&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=local-localhost/shell&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=local-localhost/shell&type=Date" />
  </picture>
 </a>

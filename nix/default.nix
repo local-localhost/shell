@@ -151,7 +151,7 @@ in
 
     meta = {
       description = "A very segsy desktop shell";
-      homepage = "https://github.com/caelestia-dots/shell";
+      homepage = "https://github.com/local-localhost/shell";
       license = lib.licenses.gpl3Only;
       mainProgram = "caelestia-shell";
     };
