@@ -168,7 +168,6 @@ Singleton {
                 activeIndicator: bar.workspaces.activeIndicator,
                 occupiedBg: bar.workspaces.occupiedBg,
                 showWindows: bar.workspaces.showWindows,
-                showWindowsOnSpecialWorkspaces: bar.workspaces.showWindowsOnSpecialWorkspaces,
                 maxWindowIcons: bar.workspaces.maxWindowIcons,
                 activeTrail: bar.workspaces.activeTrail,
                 perMonitorWorkspaces: bar.workspaces.perMonitorWorkspaces,
@@ -176,7 +175,6 @@ Singleton {
                 occupiedLabel: bar.workspaces.occupiedLabel,
                 activeLabel: bar.workspaces.activeLabel,
                 capitalisation: bar.workspaces.capitalisation,
-                specialWorkspaceIcons: bar.workspaces.specialWorkspaceIcons,
                 windowIcons: bar.workspaces.windowIcons
             },
             activeWindow: {

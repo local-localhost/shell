@@ -408,12 +408,6 @@ default, you must create it manually.
             "perMonitorWorkspaces": true,
             "showWindows": true,
             "shown": 5,
-            "specialWorkspaceIcons": [
-                {
-                    "name": "steam",
-                    "icon": "sports_esports"
-                }
-            ],
             "windowIcons": [
                 {
                     "regex": "steam(_app_(default|[0-9]+))?",
