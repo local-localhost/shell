@@ -96,7 +96,7 @@ Then simply build and install using `cmake`.
 
 ```sh
 cd $XDG_CONFIG_HOME/quickshell
-git clone https://github.com/local-localhost/dotfiles/shell.git caelestia
+git clone https://github.com/local-localhost/shell.git caelestia
 
 cd caelestia
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/
