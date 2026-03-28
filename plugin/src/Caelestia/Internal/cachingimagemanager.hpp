@@ -57,6 +57,7 @@ private:
 
     [[nodiscard]] qreal effectiveScale() const;
     [[nodiscard]] QSize effectiveSize() const;
+    void clearSource();
 
     void createCache(const QString& path, const QString& cache, const QString& fillMode, const QSize& size) const;
     [[nodiscard]] static QString sha256sum(const QString& path);

@@ -11,6 +11,19 @@
 
 namespace caelestia::internal {
 
+void CachingImageManager::clearSource() {
+    m_shaPath.clear();
+
+    if (m_cachePath.isValid()) {
+        m_cachePath = QUrl();
+        emit cachePathChanged();
+    }
+
+    if (m_item) {
+        m_item->setProperty("source", QString());
+    }
+}
+
 qreal CachingImageManager::effectiveScale() const {
     if (m_item && m_item->window()) {
         return m_item->window()->devicePixelRatio();
@@ -88,9 +101,12 @@ void CachingImageManager::setPath(const QString& path) {
     m_path = path;
     emit pathChanged();
 
-    if (!path.isEmpty()) {
-        updateSource(path);
+    if (path.isEmpty()) {
+        clearSource();
+        return;
     }
+
+    updateSource(path);
 }
 
 void CachingImageManager::updateSource() {
@@ -98,6 +114,18 @@ void CachingImageManager::updateSource() {
 }
 
 void CachingImageManager::updateSource(const QString& path) {
+    if (path.isEmpty()) {
+        clearSource();
+        return;
+    }
+
+    if (!QFileInfo::exists(path)) {
+        if (m_path == path) {
+            clearSource();
+        }
+        return;
+    }
+
     if (path.isEmpty() || path == m_shaPath) {
         // Path is empty or already calculating sha for path
         return;

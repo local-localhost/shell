@@ -19,7 +19,10 @@ Item {
     required property int rounding
 
     readonly property bool showWallpapers: search.text.startsWith(`${Config.launcher.actionPrefix}wallpaper `)
+    readonly property string wallpaperSearch: search.text.split(" ").slice(1).join(" ")
+    readonly property int wallpaperCount: Wallpapers.query(wallpaperSearch).length
     readonly property var currentList: showWallpapers ? wallpaperList.item : appList.item // Can be either ListView or PathView, so can't type properly
+    readonly property int currentCount: showWallpapers ? wallpaperCount : (currentList?.count ?? 0)
 
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottom: parent.bottom
@@ -47,7 +50,7 @@ Item {
 
             PropertyChanges {
                 root.implicitWidth: Math.max(Config.launcher.sizes.itemWidth * 1.2, wallpaperList.implicitWidth)
-                root.implicitHeight: Config.launcher.sizes.wallpaperHeight
+                root.implicitHeight: Math.max(Config.launcher.sizes.wallpaperHeight, empty.implicitHeight)
                 wallpaperList.active: true
             }
         }
@@ -107,8 +110,8 @@ Item {
     Row {
         id: empty
 
-        opacity: root.currentList?.count === 0 ? 1 : 0
-        scale: root.currentList?.count === 0 ? 1 : 0.5
+        opacity: root.currentCount === 0 ? 1 : 0
+        scale: root.currentCount === 0 ? 1 : 0.5
 
         spacing: Appearance.spacing.normal
         padding: Appearance.padding.large
