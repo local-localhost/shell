@@ -37,6 +37,13 @@ A package following the latest commit also exists as `caelestia-shell-git`. This
 and likely to be unstable/have bugs. Regular users are recommended to use the stable package
 (`caelestia-shell`).
 
+If you are building dependencies manually on Arch and the install fails because `pybind11` is
+missing, install it first:
+
+```sh
+sudo pacman -S --needed pybind11
+```
+
 ### Nix
 
 You can run the shell directly via `nix run`:
@@ -100,6 +107,7 @@ Build dependencies:
 
 -   [`cmake`](https://cmake.org)
 -   [`ninja`](https://github.com/ninja-build/ninja)
+-   [`pybind11`](https://pybind11.readthedocs.io)
 
 To install the shell manually, install all dependencies and clone this repo to `$XDG_CONFIG_HOME/quickshell/caelestia`.
 Then simply build and install using `cmake`.
