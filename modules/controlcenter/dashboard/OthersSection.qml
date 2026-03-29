@@ -11,14 +11,17 @@ SectionContainer {
     id: root
 
     required property var rootItem
+    property bool keyboardLayoutNotifications: Config.utilities.toasts.kbLayoutChanged ?? true
+    property bool capsLockNotifications: Config.utilities.toasts.capsLockChanged ?? true
+    property bool numLockNotifications: Config.utilities.toasts.numLockChanged ?? true
 
     Layout.fillWidth: true
     alignTop: true
 
     function saveKeyboardToastConfig(): void {
-        Config.utilities.toasts.kbLayoutChanged = keyboardLayoutChanged.checked;
-        Config.utilities.toasts.capsLockChanged = capsLockChanged.checked;
-        Config.utilities.toasts.numLockChanged = numLockChanged.checked;
+        Config.utilities.toasts.kbLayoutChanged = root.keyboardLayoutNotifications;
+        Config.utilities.toasts.capsLockChanged = root.capsLockNotifications;
+        Config.utilities.toasts.numLockChanged = root.numLockNotifications;
         Config.save();
     }
 
@@ -37,7 +40,6 @@ SectionContainer {
         Layout.fillWidth: true
         z: expanded ? 100 : 0
         label: qsTr("Environment")
-        description: Environments.switching ? qsTr("Applying %1").arg((Environments.list.find(option => option.id === Environments.pendingId) ?? Environments.current).name) : qsTr("Active: %1").arg(Environments.current.name)
         menuItems: [defaultItem, kvmItem, nvidiaItem]
         enabled: !Environments.switching
 
@@ -79,6 +81,12 @@ SectionContainer {
         }
     }
 
+    StyledText {
+        text: Environments.switching ? qsTr("Applying %1").arg((Environments.list.find(option => option.id === Environments.pendingId) ?? Environments.current).name) : qsTr("Active: %1").arg(Environments.current.name)
+        font.pointSize: Appearance.font.size.small
+        color: Colours.palette.m3onSurfaceVariant
+    }
+
     GridLayout {
         Layout.fillWidth: true
         columns: 2
@@ -90,8 +98,11 @@ SectionContainer {
 
             Layout.fillWidth: true
             label: qsTr("Keyboard layout changes")
-            checked: Config.utilities.toasts.kbLayoutChanged ?? true
-            onToggled: root.saveKeyboardToastConfig()
+            checked: root.keyboardLayoutNotifications
+            onToggled: checked => {
+                root.keyboardLayoutNotifications = checked;
+                root.saveKeyboardToastConfig();
+            }
         }
 
         SwitchRow {
@@ -99,8 +110,11 @@ SectionContainer {
 
             Layout.fillWidth: true
             label: qsTr("Caps lock changes")
-            checked: Config.utilities.toasts.capsLockChanged ?? true
-            onToggled: root.saveKeyboardToastConfig()
+            checked: root.capsLockNotifications
+            onToggled: checked => {
+                root.capsLockNotifications = checked;
+                root.saveKeyboardToastConfig();
+            }
         }
 
         SwitchRow {
@@ -108,8 +122,11 @@ SectionContainer {
 
             Layout.fillWidth: true
             label: qsTr("Num lock changes")
-            checked: Config.utilities.toasts.numLockChanged ?? true
-            onToggled: root.saveKeyboardToastConfig()
+            checked: root.numLockNotifications
+            onToggled: checked => {
+                root.numLockNotifications = checked;
+                root.saveKeyboardToastConfig();
+            }
         }
     }
 }

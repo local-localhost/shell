@@ -14,6 +14,10 @@ StyledRect {
     required property Props props
     required property bool expanded
     required property DrawerVisibilities visibilities
+    function isOpenableLink(link: string): bool {
+        const trimmed = link.trim();
+        return /^(?:[A-Za-z][A-Za-z0-9+.-]*:|\/|~\/|\.{1,2}\/|www\.)/.test(trimmed) || trimmed.includes("/") || trimmed.includes(".");
+    }
 
     readonly property StyledText body: (expandedContent.item as ExpandedBody)?.body ?? null
     readonly property real nonAnimHeight: expanded ? summary.implicitHeight + expandedContent.implicitHeight + expandedContent.anchors.topMargin + Appearance.padding.normal * 2 : summaryHeightMetrics.height
@@ -143,7 +147,10 @@ StyledRect {
             wrapMode: Text.WordWrap
 
             onLinkActivated: link => {
-                Quickshell.execDetached(["app2unit", "-O", "--", link]);
+                if (!root.isOpenableLink(link))
+                    return;
+
+                Quickshell.execDetached(["env", "APP2UNIT_DEBUG=0", "app2unit", "-O", "--", link]);
                 root.visibilities.sidebar = false;
             }
         }

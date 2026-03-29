@@ -12,6 +12,12 @@ Item {
     id: root
 
     required property DrawerVisibilities visibilities
+    function ensureValidCurrentTab(): void {
+        const maxIndex = Math.max(root.dashboardTabs.length - 1, 0);
+        if (root.dashState.currentTab < 0 || root.dashState.currentTab > maxIndex)
+            root.dashState.currentTab = Math.min(Math.max(root.dashState.currentTab, 0), maxIndex);
+    }
+
     readonly property bool needsKeyboard: {
         const count = repeater.count;
         for (let i = 0; i < count; i++) {
@@ -53,6 +59,9 @@ Item {
         ];
         return allTabs.filter(tab => tab.enabled);
     }
+
+    onDashboardTabsChanged: ensureValidCurrentTab()
+    Component.onCompleted: ensureValidCurrentTab()
 
     readonly property real nonAnimWidth: view.implicitWidth + viewWrapper.anchors.margins * 2
     readonly property real nonAnimHeight: tabs.implicitHeight + tabs.anchors.topMargin + view.implicitHeight + viewWrapper.anchors.margins * 2

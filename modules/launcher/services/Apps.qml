@@ -13,12 +13,12 @@ Searcher {
 
         if (entry.runInTerminal)
             Quickshell.execDetached({
-                command: ["app2unit", "--", ...Config.general.apps.terminal, `${Quickshell.shellDir}/assets/wrap_term_launch.sh`, ...entry.command],
+                command: ["env", "APP2UNIT_DEBUG=0", "app2unit", "--", ...Config.general.apps.terminal, `${Quickshell.shellDir}/assets/wrap_term_launch.sh`, ...entry.command],
                 workingDirectory: entry.workingDirectory
             });
         else
             Quickshell.execDetached({
-                command: ["app2unit", "--", ...entry.command],
+                command: ["env", "APP2UNIT_DEBUG=0", "app2unit", "--", ...entry.command],
                 workingDirectory: entry.workingDirectory
             });
     }

@@ -81,7 +81,7 @@ Item {
                 id: stateLayer
 
                 function onClicked(): void {
-                    Quickshell.execDetached(["app2unit", "--", ...Config.general.apps.terminal, "fish", "-C", `exec qalc -i '${root.math}'`]);
+                    Quickshell.execDetached(["env", "APP2UNIT_DEBUG=0", "app2unit", "--", ...Config.general.apps.terminal, "fish", "-C", `exec qalc -i '${root.math}'`]);
                     root.list.visibilities.launcher = false;
                 }
 

@@ -16,6 +16,11 @@ StyledRect {
     id: root
 
     required property NotifData modelData
+    function isOpenableLink(link: string): bool {
+        const trimmed = link.trim();
+        return /^(?:[A-Za-z][A-Za-z0-9+.-]*:|\/|~\/|\.{1,2}\/|www\.)/.test(trimmed) || trimmed.includes("/") || trimmed.includes(".");
+    }
+
     readonly property bool hasImage: modelData.image.length > 0
     readonly property bool hasAppIcon: modelData.appIcon.length > 0
     readonly property int bodyTextFormat: /[<*_`#\[\]]/.test(modelData.body) ? Text.MarkdownText : Text.PlainText
@@ -431,7 +436,10 @@ StyledRect {
                     if (!root.expanded)
                         return;
 
-                    Quickshell.execDetached(["app2unit", "-O", "--", link]);
+                    if (!root.isOpenableLink(link))
+                        return;
+
+                    Quickshell.execDetached(["env", "APP2UNIT_DEBUG=0", "app2unit", "-O", "--", link]);
                     root.modelData.popup = false;
                 }
 
