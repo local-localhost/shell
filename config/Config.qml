@@ -227,7 +227,6 @@ Singleton {
             showMedia: dashboard.showMedia,
             showPerformance: dashboard.showPerformance,
             showWeather: dashboard.showWeather,
-            showOthers: dashboard.showOthers,
             performance: {
                 showBattery: dashboard.performance.showBattery,
                 showGpu: dashboard.performance.showGpu,

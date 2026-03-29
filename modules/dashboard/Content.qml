@@ -49,12 +49,6 @@ Item {
                 iconName: "cloud",
                 text: qsTr("Weather"),
                 enabled: Config.dashboard.showWeather
-            },
-            {
-                component: othersComponent,
-                iconName: "widgets",
-                text: qsTr("Others"),
-                enabled: Config.dashboard.showOthers
             }
         ];
         return allTabs.filter(tab => tab.enabled);
@@ -195,12 +189,6 @@ Item {
                 id: weatherComponent
 
                 WeatherTab {}
-            }
-
-            Component {
-                id: othersComponent
-
-                Others {}
             }
 
             Behavior on contentX {

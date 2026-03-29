@@ -31,7 +31,6 @@ Item {
     property bool showMedia: Config.dashboard.showMedia ?? true
     property bool showPerformance: Config.dashboard.showPerformance ?? true
     property bool showWeather: Config.dashboard.showWeather ?? true
-    property bool showOthers: Config.dashboard.showOthers ?? true
 
     // Performance Resources
     property bool showBattery: Config.dashboard.performance.showBattery ?? false
@@ -51,7 +50,6 @@ Item {
         Config.dashboard.showMedia = root.showMedia;
         Config.dashboard.showPerformance = root.showPerformance;
         Config.dashboard.showWeather = root.showWeather;
-        Config.dashboard.showOthers = root.showOthers;
         Config.dashboard.performance.showBattery = root.showBattery;
         Config.dashboard.performance.showGpu = root.showGpu;
         Config.dashboard.performance.showCpu = root.showCpu;
@@ -134,6 +132,10 @@ Item {
 
                 // Performance Resources Section
                 PerformanceSection {
+                    rootItem: root
+                }
+
+                OthersSection {
                     rootItem: root
                 }
             }

@@ -10,7 +10,6 @@ JsonObject {
     property bool showMedia: true
     property bool showPerformance: true
     property bool showWeather: true
-    property bool showOthers: true
     property Sizes sizes: Sizes {}
     property Performance performance: Performance {}
 

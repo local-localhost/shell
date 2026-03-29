@@ -86,16 +86,6 @@ SectionContainer {
                 root.rootItem.saveConfig();
             }
         }
-
-        SwitchRow {
-            Layout.fillWidth: true
-            label: qsTr("Show Others tab")
-            checked: root.rootItem.showOthers
-            onToggled: checked => {
-                root.rootItem.showOthers = checked;
-                root.rootItem.saveConfig();
-            }
-        }
     }
 
     SliderInput {

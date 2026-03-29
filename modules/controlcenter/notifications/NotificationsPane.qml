@@ -31,9 +31,6 @@ Item {
     property bool dndChanged: Config.utilities.toasts.dndChanged ?? true
     property bool audioOutputChanged: Config.utilities.toasts.audioOutputChanged ?? true
     property bool audioInputChanged: Config.utilities.toasts.audioInputChanged ?? true
-    property bool capsLockChanged: Config.utilities.toasts.capsLockChanged ?? true
-    property bool numLockChanged: Config.utilities.toasts.numLockChanged ?? true
-    property bool kbLayoutChanged: Config.utilities.toasts.kbLayoutChanged ?? true
     property bool vpnChanged: Config.utilities.toasts.vpnChanged ?? true
     property bool nowPlaying: Config.utilities.toasts.nowPlaying ?? false
 
@@ -51,9 +48,6 @@ Item {
         Config.utilities.toasts.dndChanged = root.dndChanged;
         Config.utilities.toasts.audioOutputChanged = root.audioOutputChanged;
         Config.utilities.toasts.audioInputChanged = root.audioInputChanged;
-        Config.utilities.toasts.capsLockChanged = root.capsLockChanged;
-        Config.utilities.toasts.numLockChanged = root.numLockChanged;
-        Config.utilities.toasts.kbLayoutChanged = root.kbLayoutChanged;
         Config.utilities.toasts.vpnChanged = root.vpnChanged;
         Config.utilities.toasts.nowPlaying = root.nowPlaying;
 
@@ -365,36 +359,6 @@ Item {
                                 checked: root.audioInputChanged
                                 onToggled: checked => {
                                     root.audioInputChanged = checked;
-                                    root.saveConfig();
-                                }
-                            }
-
-                            SwitchRow {
-                                Layout.fillWidth: true
-                                label: qsTr("Caps lock changes")
-                                checked: root.capsLockChanged
-                                onToggled: checked => {
-                                    root.capsLockChanged = checked;
-                                    root.saveConfig();
-                                }
-                            }
-
-                            SwitchRow {
-                                Layout.fillWidth: true
-                                label: qsTr("Num lock changes")
-                                checked: root.numLockChanged
-                                onToggled: checked => {
-                                    root.numLockChanged = checked;
-                                    root.saveConfig();
-                                }
-                            }
-
-                            SwitchRow {
-                                Layout.fillWidth: true
-                                label: qsTr("Keyboard layout changes")
-                                checked: root.kbLayoutChanged
-                                onToggled: checked => {
-                                    root.kbLayoutChanged = checked;
                                     root.saveConfig();
                                 }
                             }
