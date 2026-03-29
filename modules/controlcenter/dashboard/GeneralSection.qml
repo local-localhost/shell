@@ -71,6 +71,11 @@ SectionContainer {
                 root.rootItem.saveConfig();
             }
         }
+    }
+
+    RowLayout {
+        Layout.fillWidth: true
+        spacing: Appearance.spacing.normal
 
         SwitchRow {
             Layout.fillWidth: true
@@ -78,6 +83,16 @@ SectionContainer {
             checked: root.rootItem.showWeather
             onToggled: checked => {
                 root.rootItem.showWeather = checked;
+                root.rootItem.saveConfig();
+            }
+        }
+
+        SwitchRow {
+            Layout.fillWidth: true
+            label: qsTr("Show Others tab")
+            checked: root.rootItem.showOthers
+            onToggled: checked => {
+                root.rootItem.showOthers = checked;
                 root.rootItem.saveConfig();
             }
         }
