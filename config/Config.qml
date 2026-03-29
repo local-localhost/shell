@@ -223,6 +223,10 @@ Singleton {
             mediaUpdateInterval: dashboard.mediaUpdateInterval,
             resourceUpdateInterval: dashboard.resourceUpdateInterval,
             dragThreshold: dashboard.dragThreshold,
+            showDashboard: dashboard.showDashboard,
+            showMedia: dashboard.showMedia,
+            showPerformance: dashboard.showPerformance,
+            showWeather: dashboard.showWeather,
             performance: {
                 showBattery: dashboard.performance.showBattery,
                 showGpu: dashboard.performance.showGpu,
