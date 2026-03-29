@@ -11,6 +11,7 @@ StyledClippingRect {
     id: root
 
     required property ShellScreen screen
+    required property bool fullscreen
 
     readonly property int activeWsId: Config.bar.workspaces.perMonitorWorkspaces ? (Hypr.monitorFor(screen).activeWorkspace?.id ?? 1) : Hypr.activeWsId
 
@@ -30,6 +31,7 @@ StyledClippingRect {
 
     Item {
         anchors.fill: parent
+        visible: !root.fullscreen
 
         Loader {
             asynchronous: true
@@ -73,6 +75,7 @@ StyledClippingRect {
                 activeWsId: root.activeWsId
                 workspaces: workspaces
                 mask: layout
+                fullscreen: root.fullscreen
             }
         }
 
